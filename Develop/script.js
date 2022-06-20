@@ -72,6 +72,30 @@ function generatePassword() {
         }
       }
     }
+    else {
+      var numberPick = confirm("Would you like numbers in your password?");
+      if (numberPick == true) {
+        var specialPick = confirm("Would you like special characters in your passwrod?");
+        if(specialPick == true) {
+          // password has lowercase, numbers, and special characters (NOT uppercase)
+          var lowNumSpecTrue = lowerCase.concat(numberSet, specialSet);
+          for(var i = 0; i < passwordLength; i++) {
+            characterNext = lowNumSpecTrue[Math.floor(Math.random() * Math.floor(lowNumSpecTrue.length))];
+            password = password.toString()+characterNext.toString();
+            console.log(password);
+          }
+        }
+        else {
+          // password has lowercase and numbers (NOT uppercase or special characters)
+          var lowNumTrue = lowerCase.concat(numberPick);
+          for(var i = 0; i < passwordLength; i++) {
+            characterNext = lowNumTrue[Math.floor(Math.random() * Math.floor(lowNumTrue.length))];
+            password = password.toString()+characterNext.toString();
+            console.log(password);
+          }
+        }
+      }
+    }
   }
 }
 
