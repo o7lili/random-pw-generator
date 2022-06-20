@@ -75,7 +75,7 @@ function generatePassword() {
     else {
       var numberPick = confirm("Would you like numbers in your password?");
       if (numberPick == true) {
-        var specialPick = confirm("Would you like special characters in your passwrod?");
+        var specialPick = confirm("Would you like special characters in your password?");
         if(specialPick == true) {
           // password has lowercase, numbers, and special characters (NOT uppercase)
           var lowNumSpecTrue = lowerCase.concat(numberSet, specialSet);
@@ -87,7 +87,7 @@ function generatePassword() {
         }
         else {
           // password has lowercase and numbers (NOT uppercase or special characters)
-          var lowNumTrue = lowerCase.concat(numberPick);
+          var lowNumTrue = lowerCase.concat(numberSet);
           for(var i = 0; i < passwordLength; i++) {
             characterNext = lowNumTrue[Math.floor(Math.random() * Math.floor(lowNumTrue.length))];
             password = password.toString()+characterNext.toString();
@@ -95,26 +95,35 @@ function generatePassword() {
           }
         }
       }
+      else {
+        var specialPick = confirm("Would you like special characters in your password?");
+        if(specialPick == true) {
+          // password includes lowercase and special characters (NOT uppercase or numbers)
+          var lowSpecTrue = lowerCase.concat(specialSet);
+          for(var i =0; i < passwordLength; i++) {
+            characterNext = lowSpecTrue[Math.floor(Math.random() * Math.floor(lowSpecTrue.length))];
+            password = password.toString()+characterNext.toString();
+            console.log(password);
+          }
+        }
+        else {
+          // password includes ONLY lowercase (NOT uppercase, numbers, or special characters)
+          for(var i = 0; i < passwordLength; i++) {
+            characterNext = lowerCase[Math.floor(Math.random() * Math.floor(lowerCase.length))];
+            password = password.toString()+characterNext.toString();
+            console.log(password);
+          }
+        }
+      }
     }
   }
+  else {
+    // if length of password is <8 or >128, or a non-integer is submitted, this alert will be executed
+    alert("Password must be between 8 and 128 characters in length.");
+  }
+  // return function for outputting the generated password
+  return password;
 }
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-
-
-/* PSUEDOCODE */
-/* if button is clicked, user is prompted for pw criteria
-password criteria prompts would include:
-  password length
-    8-128 characters
-  character types
-    true/false for:
-      lowercase
-      uppercase
-      numeric
-      special characters
-criteria prompts are complete, then user input should be validated
-+ 1 character type to be selected (?)
-then password is generated to match selected criteria
-generated password displayed in an alert or written to page */
