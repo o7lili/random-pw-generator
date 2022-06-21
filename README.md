@@ -6,4 +6,4 @@ It's a simple site with a button to begin the process of generating a secure pas
 Once the button is clicked, multiple prompts will alert the user to decide how long the password should be (between 8-128 characters), if it should or should not include uppercase letters, numbers, and special characters.
 Once all the selections have been made, a password with the chosen criteria will be displayed on the website.
 
-![image](https://user-images.githubusercontent.com/103470899/174823767-a64cf397-dda8-4091-84a9-0aad36e6c1ad.png) 
+![image](https://user-images.githubusercontent.com/103470899/174824020-1ad74766-0ce1-4272-94f1-fecd74f8f177.png) 
